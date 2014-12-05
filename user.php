@@ -35,7 +35,7 @@ class user {
         
         if($user->rows > 0) {
             $data = $user->fetch();
-            if($data["password"] == sha1($password)) {
+            if($data["password"] == hash("sha256", $password)) {
                 $this->userdata = $data;
                 $this->setSession();
                 return true;
